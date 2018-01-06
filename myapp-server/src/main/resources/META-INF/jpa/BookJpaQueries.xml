@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<entity-mappings xmlns="http://xmlns.jcp.org/xml/ns/persistence/orm"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence/orm
+      http://xmlns.jcp.org/xml/ns/persistence/orm_2_1.xsd"
+    version="2.1">
+
+    <named-query name="Book.findByBookIdGreaterThan">
+      <query>
+        SELECT e FROM Book e WHERE bookId > :bookId
+      </query>
+    </named-query>
+    
+    <named-native-query name="Book.findByTitle" result-set-mapping="book_mapping">
+    <query> select bookId, title from book where title = :title
+    </query>
+    </named-native-query>
+    
+    <sql-result-set-mapping name="book_mapping">
+      <constructor-result target-class="myapp.model.BookView">
+      <column name="bookId" class="java.lang.Integer"/>
+      <column name="title"/>
+      </constructor-result>
+    
+    </sql-result-set-mapping>
+ 
+ </entity-mappings>

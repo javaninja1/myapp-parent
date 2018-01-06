@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<SqlQueries>
+
+  <SqlQuery name="GET_BOOKS">
+    <![CDATA[
+       select * from books
+    ]]>      
+  </SqlQuery> 
+  
+    <SqlQuery name="GET_BOOKS2">
+    <![CDATA[
+       select * from books2
+    ]]>      
+  </SqlQuery> 
+  
+</SqlQueries>
