@@ -31,7 +31,7 @@
                         <groupId>org.apache.tomcat.maven</groupId>
                         <artifactId>tomcat7-maven-plugin</artifactId>
                         <configuration>
-                            <path>/myapp</path>
+                            <path>/myapp-reports-frontend</path>
                         </configuration>
                         <executions>
                             <execution>
@@ -48,7 +48,7 @@
    
     </profiles>
     <build>
-        <finalName>myapp</finalName>
+        <finalName>myapp-reports-frontend</finalName>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
