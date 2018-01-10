@@ -470,13 +470,6 @@
                 <version>4.0.3</version>
             </dependency>
 
-            <!-- itext unofficial library. -->
-            <dependency>
-                <groupId>itext</groupId>
-                <artifactId>itext</artifactId>
-                <version>4.2.1</version>
-            </dependency>
-
             <dependency>
                 <groupId>org.apache.xmlgraphics</groupId>
                 <artifactId>fop</artifactId>
@@ -718,7 +711,7 @@
         <module>myapp-server</module>
         <module>myapp-taglib</module>
         <module>myapp-war</module>
-        
+        <module>myapp-reports-parent</module>
    </modules>
            
 </project>

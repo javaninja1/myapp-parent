@@ -47,13 +47,18 @@ public class QueryRepository implements IQueryRepository {
             domFactory.setNamespaceAware(true); // support for xml-namespace,
                                                 // default is false!
             DocumentBuilder builder = domFactory.newDocumentBuilder();
-            ClassLoader cl = Thread.currentThread().getClass().getClassLoader();
+            ClassLoader cl = this.getClass().getClassLoader(); 
             ResourcePatternResolver resolver = new PathMatchingResourcePatternResolver(
                     cl);
             LOG.debug("Getting resources xml objects");
             Resource[] resources = resolver
                     .getResources("classpath*:queries/*SQL.xml");
 
+            if (resources.length == 0) {
+                LOG.error("No query files found!!!");
+                throw new RuntimeException("No query files found!!!");
+            }
+            
             for (Resource resource : resources) {
                 Document doc = builder.parse(resource.getInputStream());
                 LOG.debug("Processing query file:{}", resource.getFilename());

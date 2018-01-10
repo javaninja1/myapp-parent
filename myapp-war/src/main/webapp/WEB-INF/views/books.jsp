@@ -28,6 +28,9 @@
      </c:if>
     <hr>
  
+    <b>queryLookup:</b> <br> ${queryLookup}
+    <hr>
+ 
 <form:form name="books" method="POST" commandName="command">
   <input type=submit name="init" value="Init Data"/>
 </form:form>

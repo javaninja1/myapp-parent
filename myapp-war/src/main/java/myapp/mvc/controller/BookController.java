@@ -3,12 +3,14 @@ package myapp.mvc.controller;
 import java.util.Arrays;
 import java.util.List;
 
-import myapp.dao.repository.QueryRepository;
+import myapp.dao.stub.IQueryRepository;
 import myapp.model.Book;
 import myapp.model.BookView;
 import myapp.mvc.annotation.MyAnno;
 import myapp.service.stub.IBookService;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -21,11 +23,13 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @Controller
 public class BookController {
     
+    private static final Logger LOG = LoggerFactory.getLogger(BookController.class);
+
     @Autowired
     IBookService bookService;
     
     @Autowired
-    QueryRepository queryRepo;
+    IQueryRepository queryRepo;
     
     @RequestMapping( "/book")
     public ResponseEntity<String> getBook() {
@@ -74,9 +78,8 @@ public class BookController {
         BookView bookView = bookService.findByTitleNative("book2");
         model.addAttribute("bookView", bookView);
         
-        System.out.println(queryRepo.getQuery("GET_BOOKS"));
-        System.out.println(queryRepo.getQuery("GET_BOOKS2"));
-
+        model.addAttribute("queryLookup", queryRepo.getQuery("GET_BOOKS"));
+        
         return "books";
         
     }
