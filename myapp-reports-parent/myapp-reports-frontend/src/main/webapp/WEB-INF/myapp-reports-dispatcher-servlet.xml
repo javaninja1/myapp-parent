@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:context="http://www.springframework.org/schema/context"
+    xmlns:tx="http://www.springframework.org/schema/tx" xmlns:jee="http://www.springframework.org/schema/jee"
+    xmlns:util="http://www.springframework.org/schema/util" xmlns:cache="http://www.springframework.org/schema/cache"
+    xmlns:p="http://www.springframework.org/schema/p" xmlns:aop="http://www.springframework.org/schema/aop"
+    xsi:schemaLocation="
+		http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee-4.1.xsd
+		http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.1.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.1.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.1.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.1.xsd
+		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.1.xsd
+        http://www.springframework.org/schema/cache http://www.springframework.org/schema/cache/spring-cache.xsd">
+
+
+    <mvc:annotation-driven ignore-default-model-on-redirect="true" conversion-service="conversionService">
+    
+        <mvc:argument-resolvers>
+            <bean class="myapp.mvc.resolver.MyAnnoResolver" />
+        </mvc:argument-resolvers>
+        
+        <mvc:async-support default-timeout="1200000" />
+        
+    </mvc:annotation-driven>
+
+
+    <mvc:interceptors>
+        <bean class="myapp.mvc.interceptor.MyAppInterceptor" />
+    </mvc:interceptors>
+
+    <mvc:view-resolvers>
+        <mvc:jsp prefix="/WEB-INF/views/" suffix=".jsp" />
+    </mvc:view-resolvers>
+
+    <!-- Enables @Controller/@Service/@Repository etc annotations. -->
+    <context:annotation-config />
+
+    <!-- Scans for annotated @Controllers in the classpath -->
+    <context:component-scan base-package="myapp.reports"
+        use-default-filters="false">
+        <context:include-filter type="annotation"
+            expression="org.springframework.stereotype.Controller" />
+    </context:component-scan>
+
+
+    <bean id="conversionService" class="org.springframework.context.support.ConversionServiceFactoryBean">
+        <property name="converters">
+            <list>
+                <bean class="myapp.mvc.editor.LocalDateConverter" />
+            </list>
+        </property>
+    </bean>
+
+    <context:property-placeholder location="classpath*:myapp.properties" />
+    
+    <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+        <property name="maxUploadSize" value="${UPLOAD_MAX_SIZE:20000000}" />
+        <property name="defaultEncoding" value="${UPLOAD_DEFAULT_ENCODE:utf-8}" />
+    </bean>
+
+    <import resource="jamon-context.xml" />
+    
+</beans>

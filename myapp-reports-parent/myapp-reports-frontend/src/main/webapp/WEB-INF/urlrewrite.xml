@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE urlrewrite PUBLIC "-//tuckey.org//DTD UrlRewrite 4.0//EN"
+        "http://www.tuckey.org/res/dtds/urlrewrite4.0.dtd">
+
+<urlrewrite>
+    <rule>
+        <note>
+            The rule means that requests to *.jsp will be redirected to *.do
+            the url will be rewritten.
+        </note>
+        <from>(.*).jsp</from>
+        <to>$1.do</to>
+    </rule>
+
+</urlrewrite>
