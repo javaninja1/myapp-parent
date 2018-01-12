@@ -27,12 +27,13 @@ Handle following using spring server-context xml
 
 -BaseJpaDAO create common methods using generic-types
 -sql-mapping with lombok
+-custom query handler
+
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 TODO:
 ~~~~
 
--custom query handler
 -Spring CRUD repository
 -spring tags and data binding
 -display tablular data use data-tables
