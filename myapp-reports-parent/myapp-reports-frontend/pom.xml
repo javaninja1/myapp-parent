@@ -87,7 +87,7 @@
 
         <dependency>
             <groupId>myapp-reports-parent</groupId>
-            <artifactId>myapp-reports-service</artifactId>
+            <artifactId>myapp-reports-server</artifactId>
             <version>${project.version}</version>
             <type>jar</type>
         </dependency>

@@ -9,8 +9,8 @@
     <relativePath>..</relativePath>
   </parent>
 
-  <artifactId>myapp-reports-service</artifactId>
-  <name>reports-service</name>
+  <artifactId>myapp-reports-server</artifactId>
+  <name>myapp-reports-server</name>
   <packaging>jar</packaging>
   <url>http://maven.apache.org</url>
 
@@ -134,8 +134,6 @@
                 <artifactId>slf4j-log4j12</artifactId>
                 <scope>compile</scope>
             </dependency>       
-
-
 
   </dependencies>
 
