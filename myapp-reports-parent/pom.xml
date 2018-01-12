@@ -17,8 +17,8 @@
   <name>reports-parent</name>
 
   <modules>
-    <module>myapp-reports-service</module>
-    <module>myapp-reports-frontend</module>
+    <module>myapp-reports-server</module>
+    <module>myapp-reports-war</module>
   </modules>
 
 </project>
