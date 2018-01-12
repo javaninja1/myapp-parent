@@ -5,8 +5,10 @@ import java.util.List;
 
 import myapp.dao.stub.IQueryRepository;
 import myapp.model.Book;
+import myapp.model.BookReport;
 import myapp.model.BookView;
 import myapp.mvc.annotation.MyAnno;
+import myapp.service.stub.IBookReportService;
 //import myapp.mvc.annotation.MyAnno;
 import myapp.service.stub.IBookService;
 
@@ -28,7 +30,10 @@ public class ReportController {
 
     @Autowired
     IBookService bookService;
-    
+
+    @Autowired
+    IBookReportService bookReportService;
+
     @Autowired
     IQueryRepository queryRepo;
     
@@ -78,10 +83,13 @@ public class ReportController {
         model.addAttribute("namedQueryList", namedQueryList);
         
         //NamedNative query
-        BookView bookView = bookService.findByTitleNative("book2");
-        model.addAttribute("bookView", bookView);
+        BookView bookReport = bookService.findByTitleNative("book2");
+        model.addAttribute("bookView", bookReport);
         
-        model.addAttribute("queryLookup", queryRepo.getQuery("GET_BOOKS"));
+        //TODO: make this work
+        //BookReport bookReport = bookReportService.findByTitleNative("book2");
+        
+        model.addAttribute("queryLookup", "GET_BOOK_REPORT: " + queryRepo.getQuery("GET_BOOK_REPORT"));
         
         return "report";
         

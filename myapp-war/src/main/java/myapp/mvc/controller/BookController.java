@@ -78,7 +78,7 @@ public class BookController {
         BookView bookView = bookService.findByTitleNative("book2");
         model.addAttribute("bookView", bookView);
         
-        model.addAttribute("queryLookup", queryRepo.getQuery("GET_BOOKS"));
+        model.addAttribute("queryLookup", "GET_BOOKS:" + queryRepo.getQuery("GET_BOOKS"));
         
         return "books";
         

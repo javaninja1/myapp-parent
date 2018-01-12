@@ -2,9 +2,9 @@
 
 <SqlQueries>
 
-  <SqlQuery name="GET_BOOKS">
+  <SqlQuery name="GET_BOOK_REPORT">
     <![CDATA[
-       select * from books report
+       select * from books
     ]]>      
   </SqlQuery> 
   

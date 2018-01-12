@@ -10,6 +10,8 @@
   
 
   <artifactId>myapp-reports-parent</artifactId>
+    <groupId>myapp-reports-parent</groupId>
+  
   <!--<version>1.0</version>-->
   <packaging>pom</packaging>
   <name>reports-parent</name>
@@ -19,5 +21,4 @@
     <module>myapp-reports-frontend</module>
   </modules>
 
-  <groupId>myapp-reports-parent</groupId>
 </project>
