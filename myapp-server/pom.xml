@@ -54,11 +54,35 @@
   		<artifactId>hibernate-core</artifactId>
   		<scope>compile</scope>
   	</dependency>
+  	
   	<dependency>
     <groupId>org.hibernate</groupId>
     <artifactId>hibernate-entitymanager</artifactId>
-      		<scope>compile</scope>
+     <scope>compile</scope>
     </dependency>
+
+<!--  ehcache -->
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-ehcache</artifactId>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-validator</artifactId>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>net.sf.ehcache</groupId>
+            <artifactId>ehcache</artifactId>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>net.sf.ehcache</groupId>
+            <artifactId>ehcache-jgroupsreplication</artifactId>
+            <scope>provided</scope>
+        </dependency>
+
 
    <dependency>
       <groupId>org.hsqldb</groupId>
@@ -98,16 +122,8 @@
             <artifactId>h2</artifactId>
             <scope>test</scope>
         </dependency>
-        <dependency>
-            <groupId>org.hsqldb</groupId>
-            <artifactId>hsqldb</artifactId>
-            <scope>test</scope>
-        </dependency>
-          	<dependency>
-  		<groupId>org.hibernate</groupId>
-  		<artifactId>hibernate-core</artifactId>
-  		  <scope>test</scope>
-  	</dependency>
+  
+
 
             <!-- Logging -->
             <dependency>
@@ -115,6 +131,7 @@
                 <artifactId>log4j</artifactId>
                 <scope>compile</scope>
             </dependency>
+            
             <!-- Directs SLF4J logging to Log4J -->
             <dependency>
                 <groupId>org.slf4j</groupId>

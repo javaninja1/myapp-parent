@@ -1,0 +1,1 @@
+CREATE TABLE book ( bookId INTEGER IDENTITY PRIMARY KEY, title varchar(20) NOT NULL);

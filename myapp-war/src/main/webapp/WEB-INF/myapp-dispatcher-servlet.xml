@@ -20,9 +20,7 @@
         <mvc:argument-resolvers>
             <bean class="myapp.mvc.resolver.MyAnnoResolver" />
         </mvc:argument-resolvers>
-        
         <mvc:async-support default-timeout="1200000" />
-        
     </mvc:annotation-driven>
 
     <mvc:interceptors>
@@ -37,8 +35,7 @@
     <context:annotation-config />
 
     <!-- Scans for annotated @Controllers in the classpath -->
-    <context:component-scan base-package="myapp"
-        use-default-filters="false">
+    <context:component-scan base-package="myapp" use-default-filters="false">
         <context:include-filter type="annotation"
             expression="org.springframework.stereotype.Controller" />
     </context:component-scan>

@@ -1,17 +1,28 @@
 package myapp.dao.jpa;
 
+import java.util.Map;
+
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 public abstract class BaseJpaDAO<TYPE, PK> {
-    
+
+    private static final Logger LOG = LoggerFactory.getLogger(BaseJpaDAO.class);
+
     private EntityManager entityManager;
     @PersistenceContext
     public void setEntityManager(EntityManager entityManager) {
         this.entityManager = entityManager;
     }
     
+    protected Map<String, Object> getProperties() {
+        return entityManager.getProperties();
+    }
+
     public EntityManager getEntityManager() {
         return entityManager;
     }
@@ -38,6 +49,8 @@ public abstract class BaseJpaDAO<TYPE, PK> {
         }
         return q;
     }
+
+
     
 
 

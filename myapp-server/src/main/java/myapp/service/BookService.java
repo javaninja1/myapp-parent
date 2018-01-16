@@ -1,6 +1,7 @@
 package myapp.service;
 
 import java.util.List;
+import java.util.Map;
 
 import myapp.dao.repository.QueryRepository;
 import myapp.dao.stub.IBookDAO;
@@ -36,6 +37,12 @@ public class BookService implements IBookService {
     }
     
     @Override
+    public Map<String,Object> getEMProperties() {
+      //  bookDAO.printSessionStats();
+        return bookDAO.getEMProperties();
+    }
+    
+    @Override
     public void saveBook(String title) {
         Book book = new Book();
         book.setTitle(title);
@@ -61,6 +68,11 @@ public class BookService implements IBookService {
     @Override
     public List<Book> findByBookIdGreaterThan(Integer bookId) {
         return bookDAO.findByBookIdGreaterThan(bookId);
+    }
+
+    @Override
+    public int getMaxBookId() {
+        return bookDAO.getMaxBookId();
     }
     
 

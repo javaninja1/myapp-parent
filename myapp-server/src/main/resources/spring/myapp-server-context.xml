@@ -7,12 +7,12 @@ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:mvc="http://www.spri
     xmlns:jdbc="http://www.springframework.org/schema/jdbc"
     
     xsi:schemaLocation=" 
-		http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee.xsd
-		http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd
-		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
-		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
-		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd
-		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd
+    http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee.xsd
+    http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd
+    http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+    http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+    http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd
+    http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd
         http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd
         http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task.xsd
         http://www.springframework.org/schema/cache http://www.springframework.org/schema/cache/spring-cache.xsd
@@ -34,14 +34,13 @@ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:mvc="http://www.spri
         <value>#B9B9B9</value>
     </util:list>
     
-
      <bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
         <property name="entityManagerFactory" ref="entityManagerFactory" />
     </bean>
      <bean id="transactionTemplate" class="org.springframework.transaction.support.TransactionTemplate">
         <property name="transactionManager" ref="transactionManager" />
     </bean>
-	   <tx:advice id="txAdvice" transaction-manager="transactionManager">
+     <tx:advice id="txAdvice" transaction-manager="transactionManager">
         <tx:attributes>
             <tx:method name="*" rollback-for="java.lang.Exception" />
         </tx:attributes>
@@ -54,25 +53,22 @@ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:mvc="http://www.spri
     <jdbc:embedded-database id="dataSource" type="HSQL">
     </jdbc:embedded-database>
     
-    <bean id="entityManagerFactory"
-		class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
-	    <property name="persistenceUnitName" value="testingSetup"/>
-		<property name="dataSource" ref="dataSource" />
-		<property name="jpaVendorAdapter">
-			<bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
-                          <!-- Create the database, please -->
-			  <property name="generateDdl" value="true" />
-			</bean>
-		</property>
-	</bean>
     
+    <bean id="cacheManager" class="org.springframework.cache.ehcache.EhCacheCacheManager">
+    	<property name="cacheManager" ref="ehcache"/>
+    </bean>
+    <bean id="ehcache" class="org.springframework.cache.ehcache.EhCacheManagerFactoryBean">
+    	<property name="configLocation" value="classpath:ehcache.xml"/>
+    	<property name="shared" value="true"/>
+    </bean>
+  
+  
     <!-- jdbc:hsqldb:mem:dataSource -->
-   
-   <!--  
+
 <jdbc:embedded-database id="dataSource" type="HSQL">
-	<jdbc:script location="classpath:db/create-db.sql" />
-	<jdbc:script location="classpath:db/insert-data.sql" />
+  <jdbc:script location="classpath:db/create-db.sql" />
+  <jdbc:script location="classpath:db/insert-data.sql" />
 </jdbc:embedded-database>
--->
+
  
  </beans>

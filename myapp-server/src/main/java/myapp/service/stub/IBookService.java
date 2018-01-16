@@ -1,6 +1,7 @@
 package myapp.service.stub;
 
 import java.util.List;
+import java.util.Map;
 
 import myapp.model.Book;
 import myapp.model.BookView;
@@ -20,5 +21,9 @@ public interface IBookService {
   public List<Book> findByBookIdGreaterThan(Integer bookId);
 
   public BookView findByTitleNative(String title);
+
+   public Map<String, Object> getEMProperties();
+
+   public int getMaxBookId();
   
 }

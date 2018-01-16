@@ -10,6 +10,7 @@
       <query>
         SELECT e FROM Book e WHERE bookId > :bookId
       </query>
+      <hint name="org.hibernate.cacheable" value="true"/>
     </named-query>
     
     <named-native-query name="Book.findByTitle" result-set-mapping="book_mapping">

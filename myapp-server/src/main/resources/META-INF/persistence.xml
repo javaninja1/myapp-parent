@@ -5,18 +5,14 @@
     version="2.0">
 
 
-	<persistence-unit name="testingSetup">
+	<persistence-unit name="testingSetup" transaction-type="RESOURCE_LOCAL">
+	    <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
 	    <mapping-file>META-INF/jpa/BookJpaQueries.xml</mapping-file>
 	    
 	    <class>myapp.model.Book</class>
 	
-	    <properties>
-	        <property name="hibernate.archive.autodetection" value="" />
-	        <property name="hibernate.show_sql" value="true"/>
-	        <!-- Could set this here, but we don't want it for normal use, so won't
- 	        <property name="hibernate.hbm2ddl.auto" value="create"/>
- 	        -->
-	    </properties>
+      <shared-cache-mode>ENABLE_SELECTIVE</shared-cache-mode>
+      <validation-mode>NONE</validation-mode>
 	    
 	    
 	</persistence-unit>

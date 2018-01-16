@@ -32,7 +32,7 @@
     <hr>
  
 <form:form name="books" method="POST" commandName="command">
-  <input type=submit name="init" value="Init Data"/>
+  <input type=submit name="init" value="Add Data"/>
 </form:form>
 
     <hr>
@@ -53,7 +53,7 @@
     </c:if>
     
         <hr>
-    <b>Named Query:</b> <br>
+    <b>Named Queries:</b> <br>
     <c:if test="${not empty namedQueryList}">
       <table border=1>
         <tr>
@@ -62,19 +62,31 @@
         </tr>
         <c:forEach items="${namedQueryList}" var="book">
           <tr>
-            <td>${book.bookId}</td>
+            <td>${book.bookId}</td> 
             <td>${book.title}</td>
           </tr>
         </c:forEach>
       </table>
-    </c:if>
+    </c:if> <br>
+    Max Book Id: ${maxBookId} <br>
     
     <hr>
     <b>Named Native Query using sql-mapping:</b> <br>
     <c:if test="${not empty bookView}">
        ${bookView.bookId} - ${bookView.title}
     </c:if>
+
+    <hr>
+    <b>Entity Manager Properties:</b> <br>
+    <c:forEach items="${emProperties}" var="entry">
+       ${entry.key} : ${entry.value} <br>
+    </c:forEach>
     
+        <hr>
+    <b>EH Cache Info:</b> <br>
+    <c:forEach items="${cacheInfo}" var="entry">
+       ${entry} <br>
+    </c:forEach>
   </div>
 </body>
 </html>

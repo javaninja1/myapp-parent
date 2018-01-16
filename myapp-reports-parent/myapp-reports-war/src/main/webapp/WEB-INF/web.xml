@@ -18,10 +18,15 @@
     <servlet-name>myapp-reports-dispatcher</servlet-name>
     <url-pattern>/init</url-pattern>
   </servlet-mapping>
+  
   <context-param>
     <param-name>contextConfigLocation</param-name>
-    <param-value>/WEB-INF/spring-security.xml,classpath*:META-INF/spring/*.xml</param-value>
+       <param-value>
+       classpath*:spring/myapp-jpa-ehcache.xml
+       classpath*:spring/myapp-server-context.xml
+       </param-value>
   </context-param>
+  
   <filter>
     <filter-name>UrlRewriteFilter</filter-name>
     <filter-class>org.tuckey.web.filters.urlrewrite.UrlRewriteFilter</filter-class>
