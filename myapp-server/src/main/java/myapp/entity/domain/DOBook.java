@@ -1,8 +1,7 @@
-package myapp.model;
+package myapp.entity.domain;
 
 import java.io.Serializable;
 
-import javax.persistence.Cacheable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -18,7 +17,7 @@ import org.hibernate.annotations.CacheConcurrencyStrategy;
 @Table (name = "book")
 @Cache(usage=CacheConcurrencyStrategy.READ_WRITE, region= "myapp.model.Book")
 //@Cacheable (true)
-public class Book  implements Serializable {
+public class DOBook  implements Serializable {
 
 
     private static final long serialVersionUID = 1L;
@@ -33,17 +32,17 @@ public class Book  implements Serializable {
     
     
     
-    public Book() {
+    public DOBook() {
         super();
     }
 
-    public Book(Integer bookId, String title) {
+    public DOBook(Integer bookId, String title) {
         super();
         this.bookId = bookId;
         this.title = title;
     }
     
-    public Book(String title) {
+    public DOBook(String title) {
         this.title = title;
     }
 

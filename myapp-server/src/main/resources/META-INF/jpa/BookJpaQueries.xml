@@ -8,7 +8,7 @@
 
     <named-query name="Book.findByBookIdGreaterThan">
       <query>
-        SELECT e FROM Book e WHERE bookId > :bookId
+        SELECT e FROM DOBook e WHERE bookId > :bookId
       </query>
       <hint name="org.hibernate.cacheable" value="true"/>
     </named-query>
@@ -19,7 +19,7 @@
     </named-native-query>
     
     <sql-result-set-mapping name="book_mapping">
-      <constructor-result target-class="myapp.model.BookView">
+      <constructor-result target-class="myapp.model.BookModel">
       <column name="bookId" class="java.lang.Integer"/>
       <column name="title"/>
       </constructor-result>

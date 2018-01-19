@@ -3,24 +3,24 @@ package myapp.service.stub;
 import java.util.List;
 import java.util.Map;
 
-import myapp.model.Book;
-import myapp.model.BookView;
+import myapp.entity.domain.DOBook;
+import myapp.model.BookModel;
 
 public interface IBookService {
   
-  public Book getBook(Integer bookId);
+  public DOBook getBook(Integer bookId);
   
   public void saveBook(String title);
   
-  public List<Book> getAll();
+  public List<DOBook> getAll();
   
-  public Book findByTitle(String string);
+  public DOBook findByTitle(String string);
   
-  public void delete(Book book);
+  public void delete(DOBook book);
   
-  public List<Book> findByBookIdGreaterThan(Integer bookId);
+  public List<DOBook> findByBookIdGreaterThan(Integer bookId);
 
-  public BookView findByTitleNative(String title);
+  public BookModel findByTitleNative(String title);
 
    public Map<String, Object> getEMProperties();
 

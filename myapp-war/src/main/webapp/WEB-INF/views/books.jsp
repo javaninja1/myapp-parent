@@ -32,13 +32,21 @@ table, th, td {
     <c:if test="${not myapp:isEven(3)}">
         3 is not even
      </c:if>
-    <hr>
 
+    <hr>
     <b>queryLookup:</b> <br> ${queryLookup}
-    <hr>
 
+    <hr>
+    <b>Spring form:</b> <br>
+    <form:form name="books" action="books.jsp" method="POST">
+      <form:input path="title"/> &nbsp; 
+      <input type=submit name="addBook" value="Add Book" />
+    </form:form>
+
+    
+    <hr>
     <form:form name="books" method="POST" commandName="command">
-      <input type=submit name="init" value="Add Data" />
+      <input type=submit name="initData" value="Init Data" />
     </form:form>
 
     <hr>

@@ -2,24 +2,16 @@ package myapp.dao.stub;
 
 import java.util.List;
 
+import myapp.entity.domain.DOBook;
 import myapp.entity.view.ViewBook;
-import myapp.model.Book;
-import myapp.model.BookReport;
+import myapp.model.BookReportModel;
 
 public interface IBookReportDAO {
 
-    public void save(Book book);
-
-    public List<Book> getAll();
-
-    public Book findByTitle(String title);
-
-    public void remove(Book book);
-
-    public List<Book> findByBookIdGreaterThan(Integer bookId);
-
+    public List<DOBook> getAll();
+    public DOBook findByTitle(String title);
+    public List<DOBook> findByBookIdGreaterThan(Integer bookId);
     public ViewBook findByTitleNative(String title);
-
-    public BookReport findByTitleNativeWithSqlMapping(String title);
+    public BookReportModel findByTitleNativeWithSqlMapping(String title);
 
 }

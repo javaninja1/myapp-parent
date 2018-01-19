@@ -9,7 +9,7 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
-import myapp.model.Book;
+import myapp.entity.domain.DOBook;
 import myapp.service.BookService;
 
 import org.junit.Test;
@@ -46,7 +46,7 @@ public class BookDAOTest {
     @Test
     public void shouldBeAbleToPersistAnObject() {
         assertEquals(0, entityManager.createQuery("from Book").getResultList().size());
-        Book book = new Book("book1");
+        DOBook book = new DOBook("book1");
         entityManager.persist(book);
         entityManager.flush();
         assertEquals(1, entityManager.createQuery("from Book").getResultList().size());

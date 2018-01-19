@@ -9,7 +9,7 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
-import myapp.model.Book;
+import myapp.entity.domain.DOBook;
 import myapp.service.BookService;
 
 import org.junit.Test;
@@ -39,24 +39,24 @@ public class BookDAOTest {
     
     @Test
     public void shouldHaveNoObjectsAtStart() {
-        List<?> results = entityManager.createQuery("from Book").getResultList();
+        List<?> results = entityManager.createQuery("from DOBook").getResultList();
         assertTrue(results.isEmpty());
     }
     
     @Test
     public void shouldBeAbleToPersistAnObject() {
-        assertEquals(0, entityManager.createQuery("from Book").getResultList().size());
-        Book book = new Book("book1");
+        assertEquals(0, entityManager.createQuery("from DOBook").getResultList().size());
+        DOBook book = new DOBook("book1");
         entityManager.persist(book);
         entityManager.flush();
-        assertEquals(1, entityManager.createQuery("from Book").getResultList().size());
+        assertEquals(1, entityManager.createQuery("from DOBook").getResultList().size());
     }
     
     @Test
     public void shouldBeAbleToQueryForObjects() {
         shouldBeAbleToPersistAnObject();
-        assertEquals(1, entityManager.createQuery("from Book where title = 'book1'").getResultList().size());
-        assertEquals(0, entityManager.createQuery("from Book where title = 'book2'").getResultList().size());
+        assertEquals(1, entityManager.createQuery("from DOBook where title = 'book1'").getResultList().size());
+        assertEquals(0, entityManager.createQuery("from DOBook where title = 'book2'").getResultList().size());
     }
     
     //END TESTS

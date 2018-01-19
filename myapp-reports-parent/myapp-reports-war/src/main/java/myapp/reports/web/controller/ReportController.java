@@ -4,8 +4,8 @@ import java.util.Arrays;
 import java.util.List;
 
 import myapp.dao.stub.IQueryRepository;
+import myapp.entity.domain.DOBook;
 import myapp.entity.view.ViewBook;
-import myapp.model.Book;
 import myapp.mvc.annotation.MyAnno;
 import myapp.service.stub.IBookReportService;
 import myapp.service.stub.IBookService;
@@ -37,7 +37,7 @@ public class ReportController {
     
     @RequestMapping( "/report")
     public ResponseEntity<String> getBook() {
-        Book book = bookService.getBook(5);
+        DOBook book = bookService.getBook(5);
         ResponseEntity<String> response = new ResponseEntity<>("Response:<br>" + book.toString(),
                  HttpStatus.OK);
         return response;
@@ -75,11 +75,11 @@ public class ReportController {
        // model.addAttribute("result", myAnno);
         
         //createQuery
-        List<Book> bookList = bookService.getAll();
+        List<DOBook> bookList = bookService.getAll();
         model.addAttribute("bookList", bookList);
         
         //Named query
-        List<Book> namedQueryList = bookService.findByBookIdGreaterThan(1);
+        List<DOBook> namedQueryList = bookService.findByBookIdGreaterThan(1);
         model.addAttribute("namedQueryList", namedQueryList);
         
         //NamedNative query

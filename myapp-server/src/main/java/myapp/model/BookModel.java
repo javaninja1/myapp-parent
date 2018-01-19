@@ -4,7 +4,7 @@ import lombok.AllArgsConstructor;
 
 
 @AllArgsConstructor
-public class BookView {
+public class BookModel {
     Integer bookId;
     String  title;
     

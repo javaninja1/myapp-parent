@@ -4,7 +4,7 @@ import lombok.AllArgsConstructor;
 
 
 @AllArgsConstructor
-public class BookReport {
+public class BookReportModel {
     Integer bookId;
     String  title;
     

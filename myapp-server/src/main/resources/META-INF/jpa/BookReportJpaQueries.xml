@@ -8,7 +8,7 @@
 
     <named-query name="BookReport.findByBookIdGreaterThan">
       <query>
-        SELECT e FROM Book e WHERE bookId > :bookId
+        SELECT e FROM DOBook e WHERE bookId > :bookId
       </query>
     </named-query>
     
@@ -19,7 +19,7 @@
     
     
     <sql-result-set-mapping name="book_report_mapping">
-      <constructor-result target-class="myapp.model.BookReport">
+      <constructor-result target-class="myapp.model.BookReportModel">
       <column name="bookId" class="java.lang.Integer"/>
       <column name="title"/>
       </constructor-result>

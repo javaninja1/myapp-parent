@@ -6,8 +6,8 @@ import java.util.SortedMap;
 import javax.persistence.TypedQuery;
 
 import myapp.dao.stub.IBookDAO;
-import myapp.model.Book;
-import myapp.model.BookView;
+import myapp.entity.domain.DOBook;
+import myapp.model.BookModel;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -18,14 +18,24 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public class JpaBookDAO extends BaseJpaDAO<Book,Integer> implements IBookDAO  {
+public class JpaBookDAO extends BaseJpaDAO<DOBook,Integer> implements IBookDAO  {
     
     
     private static final Logger LOG = LoggerFactory.getLogger(JpaBookDAO.class);
 
 
     @Override
-    public void save(Book book) {
+    public Class<DOBook> getEntityClass() {
+        return DOBook.class;
+    }
+
+    @Override
+    public Class<Integer> getKeyClass() {
+        return Integer.class;
+    }
+
+    @Override
+    public void save(DOBook book) {
         persist(book);
     }
 
@@ -35,22 +45,22 @@ public class JpaBookDAO extends BaseJpaDAO<Book,Integer> implements IBookDAO  {
     }
     
     @Override
-    public List<Book> getAll() {
-        TypedQuery<Book> t =  query("select e from Book e", Book.class);
+    public List<DOBook> getAll() {
+        TypedQuery<DOBook> t =  query("select e from DOBook e", DOBook.class);
         return t.getResultList();
     }
 
     @Override
-    public Book findByTitle(String title) {
-         Book b =  query("select e from Book e where title = :title", Book.class)
+    public DOBook findByTitle(String title) {
+         DOBook b =  query("select e from DOBook e where title = :title", DOBook.class)
                 .setParameter("title", title)
                 .getSingleResult();
          return retrieveByPK(b.getBookId());
     }
 
     @Override
-    public BookView findByTitleNative(String title) {
-        TypedQuery<BookView> typedQuery = getEntityManager().createNamedQuery("Book.findByTitle", BookView.class);
+    public BookModel findByTitleNative(String title) {
+        TypedQuery<BookModel> typedQuery = getEntityManager().createNamedQuery("Book.findByTitle", BookModel.class);
         typedQuery.setMaxResults(1);
         typedQuery.setParameter("title", title);
         return typedQuery.getResultList()
@@ -61,13 +71,13 @@ public class JpaBookDAO extends BaseJpaDAO<Book,Integer> implements IBookDAO  {
 
     
     @Override
-    public void remove(Book book) {
+    public void remove(DOBook book) {
         getEntityManager().remove(book);
     }
     
     @Override
-    public List<Book> findByBookIdGreaterThan(Integer bookId) {
-        TypedQuery<Book> typedQuery = getEntityManager().createNamedQuery("Book.findByBookIdGreaterThan", Book.class);
+    public List<DOBook> findByBookIdGreaterThan(Integer bookId) {
+        TypedQuery<DOBook> typedQuery = getEntityManager().createNamedQuery("Book.findByBookIdGreaterThan", DOBook.class);
         typedQuery.setParameter("bookId", bookId).getResultList();
         return typedQuery.getResultList();
     }
@@ -92,21 +102,21 @@ public class JpaBookDAO extends BaseJpaDAO<Book,Integer> implements IBookDAO  {
         
         //printStats(stats, 0);
         
-        Book book = (Book) session.load(Book.class, 1);
+        DOBook book = (DOBook) session.load(DOBook.class, 1);
         printData(book, stats, 1);
         
-        book = (Book) session.load(Book.class, 1);
+        book = (DOBook) session.load(DOBook.class, 1);
         printData(book, stats, 2);
         
         //clear first level cache, so that second level cache is used
         session.evict(book);
-        book = (Book) session.load(Book.class, 1);
+        book = (DOBook) session.load(DOBook.class, 1);
         printData(book, stats, 3);
         
-        book = (Book) session.load(Book.class, 3);
+        book = (DOBook) session.load(DOBook.class, 3);
         printData(book, stats, 4);
         
-        book = (Book) otherSession.load(Book.class, 1);
+        book = (DOBook) otherSession.load(DOBook.class, 1);
         printData(book, stats, 5);
         
         //Release resources
@@ -123,23 +133,13 @@ public class JpaBookDAO extends BaseJpaDAO<Book,Integer> implements IBookDAO  {
         LOG.debug("Second Level Put Count:{}",stats.getSecondLevelCachePutCount());
     }
 
-    private static void printData(Book book, Statistics stats, int count) {
+    private static void printData(DOBook book, Statistics stats, int count) {
         LOG.debug("{}:{}", count , book);
         printStats(stats, count);
     }
 
     @Override
     public int getMaxBookId() {
-        return query("select max(bookId) from Book e", Integer.class).getFirstResult();
-    }
-
-    @Override
-    public Class<Book> getEntityClass() {
-        return Book.class;
-    }
-
-    @Override
-    public Class<Integer> getKeyClass() {
-        return Integer.class;
+        return query("select max(bookId) from DOBook e", Integer.class).getFirstResult();
     }
 }

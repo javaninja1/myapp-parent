@@ -4,7 +4,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
 
-import myapp.model.Book;
+import myapp.entity.domain.DOBook;
 
 import org.junit.Assert;
 import org.junit.Rule;
@@ -35,7 +35,7 @@ public class BookServiceTest {
     @Test
     public void testSaveBook() {
         bookService.saveBook("book1");
-        Book book = bookService.findByTitle("book1");
+        DOBook book = bookService.findByTitle("book1");
         Assert.assertNotNull(book);
         Assert.assertTrue("book1".equals(book.getTitle()));
         
