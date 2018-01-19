@@ -42,7 +42,7 @@ public class BookController {
     @Autowired
     @Resource(name = "colorList")
     public void setColorList(List<String> list) {
-        LOG.debug("Setting dateFormatList {}", list);
+        LOG.debug("Setting colorList {}", list);
         this.colorList = list;
     }
     
