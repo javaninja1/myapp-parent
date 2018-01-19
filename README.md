@@ -13,14 +13,15 @@ MVC
 -custom tag using java class
 -custom tag using tag file
 -application context listener
+-use lookup bean values in JSP/Controllers/Service layers
 
 Config files: server-context xml, persistence.xml, ehcache.xml, bean definitions xml
-- hsql datasource
-- entity manager factory that uses hsql datasource
-- hibernate as JPA vendor
-- transaction manager, transaction template, transaction advice 
--lookup beans
--create schema and test data
+  -hsql datasource
+  -entity manager factory that uses hsql datasource
+  -hibernate as JPA vendor
+  -transaction manager, transaction template, transaction advice 
+  -lookup beans
+  -create schema and test data
 
 Service and dao classes
 -JPA ORM

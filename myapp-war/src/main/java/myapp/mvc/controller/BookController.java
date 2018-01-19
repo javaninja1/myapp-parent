@@ -4,6 +4,8 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.IntStream;
 
+import javax.annotation.Resource;
+
 import myapp.dao.stub.IQueryRepository;
 import myapp.entity.domain.DOBook;
 import myapp.model.BookForm;
@@ -33,6 +35,20 @@ public class BookController {
 
     @Autowired
     IQueryRepository queryRepo;
+    
+    
+    List<String> colorList;
+    
+    @Autowired
+    @Resource(name = "colorList")
+    public void setDateFormatList(List<String> list) {
+        LOG.debug("Setting dateFormatList {}", list);
+        this.colorList = list;
+    }
+    @ModelAttribute("colorList")
+    public List<String> getDateFormatList() {
+        return colorList;
+    }
 
     @RequestMapping(params = "initData", path = "/books.do", method = RequestMethod.POST)
     public String postInitData(Model model) {

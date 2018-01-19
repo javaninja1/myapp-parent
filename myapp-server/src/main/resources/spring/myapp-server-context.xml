@@ -62,14 +62,17 @@ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:mvc="http://www.spri
     <jdbc:embedded-database id="dataSource" type="HSQL">
     </jdbc:embedded-database>
     
-
   
     <!-- jdbc:hsqldb:mem:dataSource -->
-
 <jdbc:embedded-database id="dataSource" type="HSQL">
   <jdbc:script location="classpath:db/create-db.sql" />
   <jdbc:script location="classpath:db/insert-data.sql" />
 </jdbc:embedded-database>
 
+    <util:list id="colorList" list-class="java.util.ArrayList" value-type="java.lang.String">
+        <value>#ccccff</value>
+        <value>#ffcc99</value>
+    </util:list>
+    
  
  </beans>
