@@ -17,18 +17,18 @@ import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 public class MyAppInterceptor extends HandlerInterceptorAdapter implements HandlerInterceptor {
     private static final Logger LOG = LoggerFactory.getLogger(MyAppInterceptor.class);
 
-    private List<String> colorCodeList;
+    private List<String> colorList;
 
     
     @Autowired
     public List<String> getColorCodeList() {
-        return colorCodeList;
+        return colorList;
     }
     
     @Autowired
-    @Resource(name = "colorCodeList")
-    public void setColorCodeList(List<String> colorCodeList) {
-        this.colorCodeList = colorCodeList;
+    @Resource(name = "colorList")
+    public void setColorCodeList(List<String> colorList) {
+        this.colorList = colorList;
     }
     
     @Override
@@ -43,8 +43,8 @@ public class MyAppInterceptor extends HandlerInterceptorAdapter implements Handl
             HttpServletResponse response, Object handler,
             ModelAndView modelAndView) throws Exception {
         LOG.trace("START: postHandle");
-        String colorCodeList = (String) request.getAttribute("colorCodeList");
-        modelAndView.addObject("colorCodeList", colorCodeList);
+       // String colorList = (String) request.getAttribute("colorList");
+        modelAndView.addObject("colorList", colorList);
         LOG.trace("END: postHandle");    }
 
     @Override

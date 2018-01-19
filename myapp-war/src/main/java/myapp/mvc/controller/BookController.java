@@ -37,20 +37,6 @@ public class BookController {
     IQueryRepository queryRepo;
     
     
-    List<String> colorList;
-    
-    @Autowired
-    @Resource(name = "colorList")
-    public void setColorList(List<String> list) {
-        LOG.debug("Setting colorList {}", list);
-        this.colorList = list;
-    }
-    
-    @ModelAttribute("colorList")
-    public List<String> getColorList() {
-        return colorList;
-    }
-
     @RequestMapping(params = "initData", path = "/books.do", method = RequestMethod.POST)
     public String postInitData(Model model) {
         IntStream.of(1, 2).forEach(e -> bookService.saveBook("Book " + e));
@@ -101,8 +87,21 @@ public class BookController {
 
     }
 
-    //UNUSED
+    //Model attribute demo
+    List<String> colorList;
+    @Autowired
+    @Resource(name = "colorList")
+    public void setControllerColorList(List<String> list) {
+        LOG.debug("Setting colorList {}", list);
+        this.colorList = list;
+    }
     
+    @ModelAttribute("controllerColorList")
+    public List<String> getControllerColorList() {
+        return colorList;
+    }
+    
+    //UNUSED
     @RequestMapping("/book")
     public ResponseEntity<String> getBook() {
         DOBook book = bookService.getBook(5);

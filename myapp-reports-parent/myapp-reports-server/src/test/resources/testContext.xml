@@ -29,7 +29,7 @@ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:mvc="http://www.spri
         <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller" />
     </context:component-scan>
 
-    <util:list id="colorCodeList" list-class="java.util.ArrayList" value-type="java.lang.String">
+    <util:list id="colorList" list-class="java.util.ArrayList" value-type="java.lang.String">
         <value>#FFFFFF</value>
         <value>#B9B9B9</value>
     </util:list>

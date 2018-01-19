@@ -38,11 +38,6 @@ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:mvc="http://www.spri
         <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller" />
     </context:component-scan>
 
-    <util:list id="colorCodeList" list-class="java.util.ArrayList" value-type="java.lang.String">
-        <value>#FFFFFF</value>
-        <value>#B9B9B9</value>
-    </util:list>
-    
      <bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
         <property name="entityManagerFactory" ref="entityManagerFactory" />
     </bean>
@@ -69,10 +64,6 @@ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:mvc="http://www.spri
   <jdbc:script location="classpath:db/insert-data.sql" />
 </jdbc:embedded-database>
 
-    <util:list id="colorList" list-class="java.util.ArrayList" value-type="java.lang.String">
-        <value>#ccccff</value>
-        <value>#ffcc99</value>
-    </util:list>
-    
+  <import resource="classpath*:spring/myapp-resources.xml"/>
  
  </beans>

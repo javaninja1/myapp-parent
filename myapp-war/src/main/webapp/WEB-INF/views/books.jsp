@@ -17,7 +17,7 @@ table, th, td {
   <h3>Main App</h3>
     <hr>
     <b>Param passing and custom annotation:</b> <br> 
-    Reached the jsp: ${result}
+    Reached the jsp: ${result} : ${controllerColorList[0]}
 <!----------------------------------------------------------->
     <hr>
     <b>Custom Taglib: </b> <br>
@@ -110,7 +110,7 @@ table, th, td {
         </c:forEach>
       </table>
     </div>
-<----------------------------------------------------------->
+<!----------------------------------------------------------->
     
     
   </div>
