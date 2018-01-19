@@ -13,7 +13,7 @@ MVC
 -custom tag using java class
 -custom tag using tag file
 -application context listener
--use lookup bean values in JSP/Controllers/Service layers
+-lookup bean values in JSP/Controllers/Service layers
 
 Config files: server-context xml, persistence.xml, ehcache.xml, bean definitions xml
   -hsql datasource
@@ -23,18 +23,22 @@ Config files: server-context xml, persistence.xml, ehcache.xml, bean definitions
   -lookup beans
   -create schema and test data
 
-Service and dao classes
+Service and DAO Layer
 -JPA ORM
 -JPA named query
 -JPA named query from xml
 -JPA named native query from xml
--BaseJpaDAO create common methods using generic-types
-
--JUnit testing and injecting test-spring-context
+-BaseJpaDAO - common methods using generic-types
 -sql-mapping with lombok
 -custom query handler
 
--child jar/war  
+JUnit testing
+  -test classes/methods 
+  -injecting test-spring-context
+
+Maven
+ -parent/child poms
+ -adding jars to wars  
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 TODO:
