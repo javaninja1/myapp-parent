@@ -16,6 +16,8 @@ Handle following using spring server-context xml
 - entity manager factory that uses hsql datasource
 - hibernate as JPA vendor
 - transaction manager, transaction template, transaction advice 
+-lookup beans
+-create schema and test data
 
 -service and dao classes
 -JPA ORM
@@ -24,21 +26,19 @@ Handle following using spring server-context xml
 -JPA named native query from xml
 
 -JUnit testing and injecting test-spring-context
-
 -BaseJpaDAO create common methods using generic-types
 -sql-mapping with lombok
 -custom query handler
 
+-child jar/war  
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 TODO:
 ~~~~
-
--Spring CRUD repository
--spring tags and data binding
+-spring form tags and data binding, post and save data
 -display tablular data use data-tables
 -single sign on filter
--gson convertor
+-gson/message convertors
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
