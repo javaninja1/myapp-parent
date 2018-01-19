@@ -38,7 +38,7 @@ Service and dao classes
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 TODO:
 ~~~~
--display tablular data use data-tables
+-display tablular data using data-tables
 -single sign on filter
 -gson/message convertors
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
