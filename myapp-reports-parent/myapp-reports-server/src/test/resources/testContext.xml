@@ -58,7 +58,7 @@ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:mvc="http://www.spri
     
     <bean id="entityManagerFactory"
 		class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
-	    <property name="persistenceUnitName" value="testingSetup"/>
+	    <property name="persistenceUnitName" value="bookUnit"/>
 		<property name="dataSource" ref="dataSource" />
 		<property name="jpaVendorAdapter">
 			<bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">

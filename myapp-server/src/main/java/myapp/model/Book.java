@@ -2,6 +2,7 @@ package myapp.model;
 
 import java.io.Serializable;
 
+import javax.persistence.Cacheable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -16,6 +17,7 @@ import org.hibernate.annotations.CacheConcurrencyStrategy;
 @Entity
 @Table (name = "book")
 @Cache(usage=CacheConcurrencyStrategy.READ_WRITE, region= "myapp.model.Book")
+//@Cacheable (true)
 public class Book  implements Serializable {
 
 

@@ -2,9 +2,9 @@
 
 <SqlQueries>
 
-  <SqlQuery name="GET_BOOK_REPORT">
+  <SqlQuery name="ViewBook.findByTitle">
     <![CDATA[
-       select * from books
+       SELECT bookId, title FROM book where title = :title 
     ]]>      
   </SqlQuery> 
   

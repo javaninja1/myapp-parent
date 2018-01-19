@@ -11,8 +11,8 @@
     <relativePath>..</relativePath>
   </parent>
 
-  <artifactId>myapp-reports</artifactId>
-  <name>myapp-reports</name>
+  <artifactId>myapp-reports-war</artifactId>
+  <name>myapp-reports-war</name>
   <packaging>war</packaging>
   <url>http://maven.apache.org</url>
 

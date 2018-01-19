@@ -4,6 +4,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import myapp.dao.stub.IQueryRepository;
+import myapp.entity.view.ViewBook;
 import myapp.model.Book;
 import myapp.model.BookReport;
 import myapp.model.BookView;
@@ -83,13 +84,13 @@ public class ReportController {
         model.addAttribute("namedQueryList", namedQueryList);
         
         //NamedNative query
-        BookView bookReport = bookService.findByTitleNative("book2");
+        ViewBook bookReport = bookReportService.findByTitleNative("book2");
         model.addAttribute("bookView", bookReport);
         
         //TODO: make this work
         //BookReport bookReport = bookReportService.findByTitleNative("book2");
         
-        model.addAttribute("queryLookup", "GET_BOOK_REPORT: " + queryRepo.getQuery("GET_BOOK_REPORT"));
+        model.addAttribute("queryLookup", "GET_BOOK_REPORT: " + queryRepo.getQuery("ViewBook.findByTitle"));
         
         return "report";
         

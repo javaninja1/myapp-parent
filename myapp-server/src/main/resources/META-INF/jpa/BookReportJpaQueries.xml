@@ -17,6 +17,7 @@
     </query>
     </named-native-query>
     
+    
     <sql-result-set-mapping name="book_report_mapping">
       <constructor-result target-class="myapp.model.BookReport">
       <column name="bookId" class="java.lang.Integer"/>

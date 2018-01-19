@@ -2,8 +2,8 @@ package myapp.service.stub;
 
 import java.util.List;
 
+import myapp.entity.view.ViewBook;
 import myapp.model.Book;
-import myapp.model.BookReport;
 
 public interface IBookReportService {
   
@@ -19,6 +19,6 @@ public interface IBookReportService {
   
   public List<Book> findByBookIdGreaterThan(Integer bookId);
 
-  public BookReport findByTitleNative(String title);
+  public ViewBook findByTitleNative(String title);
   
 }

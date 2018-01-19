@@ -2,6 +2,7 @@ package myapp.service;
 
 import java.util.List;
 import java.util.Map;
+import java.util.SortedMap;
 
 import myapp.dao.repository.QueryRepository;
 import myapp.dao.stub.IBookDAO;
@@ -37,7 +38,7 @@ public class BookService implements IBookService {
     }
     
     @Override
-    public Map<String,Object> getEMProperties() {
+    public SortedMap<String,Object> getEMProperties() {
       //  bookDAO.printSessionStats();
         return bookDAO.getEMProperties();
     }

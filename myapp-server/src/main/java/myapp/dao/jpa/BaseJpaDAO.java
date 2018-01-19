@@ -1,6 +1,7 @@
 package myapp.dao.jpa;
 
-import java.util.Map;
+import java.util.SortedMap;
+import java.util.TreeMap;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -8,21 +9,46 @@ import javax.persistence.TypedQuery;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+
 
 public abstract class BaseJpaDAO<TYPE, PK> {
 
     private static final Logger LOG = LoggerFactory.getLogger(BaseJpaDAO.class);
 
     private EntityManager entityManager;
+    
+    public abstract Class<TYPE> getEntityClass();
+
+    public abstract Class<PK> getKeyClass();
+    
+    @Autowired
+    myapp.dao.stub.IQueryRepository queryRepo;
+    
+    protected String getQuery(String queryName) {
+        return queryRepo.getQuery(queryName);
+    }
+    
+    
     @PersistenceContext
     public void setEntityManager(EntityManager entityManager) {
         this.entityManager = entityManager;
     }
     
-    protected Map<String, Object> getProperties() {
-        return entityManager.getProperties();
+    protected SortedMap<String, Object> getProperties() {
+        SortedMap<String, Object> properties = new TreeMap<String, Object>();
+        properties.putAll(entityManager.getProperties());
+        properties.putAll(entityManager.getEntityManagerFactory().getProperties());
+        return properties;
     }
 
+    public TYPE retrieveByPK(PK key) {
+        if (key == null) {
+            return null;
+        }
+        return getEntityManager().find(getEntityClass(), key);
+    }
+    
     public EntityManager getEntityManager() {
         return entityManager;
     }

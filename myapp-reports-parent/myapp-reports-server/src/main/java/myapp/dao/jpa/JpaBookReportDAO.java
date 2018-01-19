@@ -12,6 +12,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.support.TransactionTemplate;
 
+import myapp.entity.view.ViewBook;
+
 @Repository
 public class JpaBookReportDAO extends BaseJpaDAO<Book,Integer> implements IBookReportDAO  {
     
@@ -46,7 +48,7 @@ public class JpaBookReportDAO extends BaseJpaDAO<Book,Integer> implements IBookR
     }
 
     @Override
-    public BookReport findByTitleNative(String title) {
+    public BookReport findByTitleNativeWithSqlMapping(String title) {
         TypedQuery<BookReport> typedQuery = getEntityManager().createNamedQuery("BookReport.findByTitle", BookReport.class);
         typedQuery.setMaxResults(1);
         typedQuery.setParameter("title", title);
@@ -55,7 +57,19 @@ public class JpaBookReportDAO extends BaseJpaDAO<Book,Integer> implements IBookR
                          .findFirst()
                           .orElse(null);
     }
-
+    
+    @Override
+    public ViewBook findByTitleNative(String title) {        
+        TypedQuery<ViewBook> typedQuery = (TypedQuery<ViewBook>) getEntityManager().createNativeQuery(getQuery("ViewBook.findByTitle"), ViewBook.class);
+        typedQuery.setMaxResults(1);
+        typedQuery.setParameter("title", title);
+        return typedQuery.getResultList()
+                         .stream()
+                         .findFirst()
+                          .orElse(null);
+    }
+    
+    
     
     @Override
     public void remove(Book book) {
@@ -67,6 +81,16 @@ public class JpaBookReportDAO extends BaseJpaDAO<Book,Integer> implements IBookR
         TypedQuery<Book> typedQuery = getEntityManager().createNamedQuery("Book.findByBookIdGreaterThan", Book.class);
         typedQuery.setParameter("bookId", bookId).getResultList();
         return typedQuery.getResultList();
+    }
+
+    @Override
+    public Class<Book> getEntityClass() {        
+        return Book.class;
+    }
+
+    @Override
+    public Class<Integer> getKeyClass() {
+        return Integer.class;
     }
     
     

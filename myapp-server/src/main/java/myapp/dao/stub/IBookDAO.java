@@ -1,7 +1,7 @@
 package myapp.dao.stub;
 
 import java.util.List;
-import java.util.Map;
+import java.util.SortedMap;
 
 import myapp.model.Book;
 import myapp.model.BookView;
@@ -20,7 +20,7 @@ public interface IBookDAO {
 
     public BookView findByTitleNative(String title);
     
-    public Map<String,Object> getEMProperties();
+    public SortedMap<String, Object> getEMProperties();
 
     void printSessionStats();
 

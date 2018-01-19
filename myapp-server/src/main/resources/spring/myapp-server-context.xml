@@ -23,7 +23,16 @@ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:mvc="http://www.spri
 
     <!-- Enables @Controller/@Service/@Repository etc annotations. -->
     <context:annotation-config />
-
+<!-- 
+    <cache:annotation-driven/>
+    <bean id="cacheManager" class="org.springframework.cache.ehcache.EhCacheCacheManager">
+        <property name="cacheManager" ref="ehcache"/>
+    </bean>
+    <bean id="ehcache" class="org.springframework.cache.ehcache.EhCacheManagerFactoryBean">
+        <property name="configLocation" value="classpath:ehcache.xml"/>
+        <property name="shared" value="true"/>
+    </bean>
+-->
     <!-- Scans for everything except @Controllers in the classpath -->
     <context:component-scan base-package="myapp" use-default-filters="true">
         <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller" />
@@ -53,15 +62,7 @@ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:mvc="http://www.spri
     <jdbc:embedded-database id="dataSource" type="HSQL">
     </jdbc:embedded-database>
     
-    
-    <bean id="cacheManager" class="org.springframework.cache.ehcache.EhCacheCacheManager">
-    	<property name="cacheManager" ref="ehcache"/>
-    </bean>
-    <bean id="ehcache" class="org.springframework.cache.ehcache.EhCacheManagerFactoryBean">
-    	<property name="configLocation" value="classpath:ehcache.xml"/>
-    	<property name="shared" value="true"/>
-    </bean>
-  
+
   
     <!-- jdbc:hsqldb:mem:dataSource -->
 

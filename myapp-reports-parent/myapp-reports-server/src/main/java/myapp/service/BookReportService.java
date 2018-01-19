@@ -1,13 +1,9 @@
 package myapp.service;
 
 import java.util.List;
-
-import myapp.dao.repository.QueryRepository;
-import myapp.dao.stub.IBookDAO;
 import myapp.dao.stub.IBookReportDAO;
+import myapp.entity.view.ViewBook;
 import myapp.model.Book;
-import myapp.model.BookReport;
-import myapp.model.BookView;
 import myapp.service.stub.IBookReportService;
 
 import org.slf4j.Logger;
@@ -20,9 +16,7 @@ public class BookReportService implements IBookReportService {
 
     private static final Logger LOG = LoggerFactory.getLogger(BookService.class);
 
-    @Autowired
-    QueryRepository queryRepo;
-    
+
     @Autowired
     IBookReportDAO bookReportDAO;
     
@@ -51,7 +45,7 @@ public class BookReportService implements IBookReportService {
     }
     
     @Override
-    public BookReport findByTitleNative(String title) {
+    public ViewBook findByTitleNative(String title) {
         LOG.info("title:{}", title); //info level needed to see logs during unit test
         return bookReportDAO.findByTitleNative(title);
     }

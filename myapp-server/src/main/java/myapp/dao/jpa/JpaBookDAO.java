@@ -1,7 +1,7 @@
 package myapp.dao.jpa;
 
 import java.util.List;
-import java.util.Map;
+import java.util.SortedMap;
 
 import javax.persistence.TypedQuery;
 
@@ -30,7 +30,7 @@ public class JpaBookDAO extends BaseJpaDAO<Book,Integer> implements IBookDAO  {
     }
 
     @Override
-    public Map<String,Object> getEMProperties() {
+    public SortedMap<String,Object> getEMProperties() {
         return getProperties();
     }
     
@@ -42,9 +42,10 @@ public class JpaBookDAO extends BaseJpaDAO<Book,Integer> implements IBookDAO  {
 
     @Override
     public Book findByTitle(String title) {
-        return (Book) query("select e from Book e where title = :title", Book.class)
+         Book b =  query("select e from Book e where title = :title", Book.class)
                 .setParameter("title", title)
                 .getSingleResult();
+         return retrieveByPK(b.getBookId());
     }
 
     @Override
@@ -130,5 +131,15 @@ public class JpaBookDAO extends BaseJpaDAO<Book,Integer> implements IBookDAO  {
     @Override
     public int getMaxBookId() {
         return query("select max(bookId) from Book e", Integer.class).getFirstResult();
+    }
+
+    @Override
+    public Class<Book> getEntityClass() {
+        return Book.class;
+    }
+
+    @Override
+    public Class<Integer> getKeyClass() {
+        return Integer.class;
     }
 }
