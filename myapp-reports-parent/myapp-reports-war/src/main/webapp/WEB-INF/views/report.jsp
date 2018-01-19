@@ -74,8 +74,8 @@
     
     <hr>
     <b>Named Native Query using sql-mapping:</b> <br>
-    <c:if test="${not empty bookView}">
-       ${bookView.bookId} - ${bookView.title}
+    <c:if test="${not empty viewBook}">
+       ${viewBook.bookId} - ${viewBook.title}
     </c:if>
     
   </div>

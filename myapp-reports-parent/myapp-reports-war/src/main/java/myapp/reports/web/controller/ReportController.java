@@ -6,11 +6,8 @@ import java.util.List;
 import myapp.dao.stub.IQueryRepository;
 import myapp.entity.view.ViewBook;
 import myapp.model.Book;
-import myapp.model.BookReport;
-import myapp.model.BookView;
 import myapp.mvc.annotation.MyAnno;
 import myapp.service.stub.IBookReportService;
-//import myapp.mvc.annotation.MyAnno;
 import myapp.service.stub.IBookService;
 
 import org.slf4j.Logger;
@@ -70,6 +67,8 @@ public class ReportController {
     
     @RequestMapping( path="/report.do", method=RequestMethod.GET)
     public String getReport(Model model, @MyAnno String myAnno) {
+        LOG.debug("myAnno:{}", myAnno);
+        
         //annotation
         model.addAttribute("result", myAnno);
         
@@ -84,13 +83,13 @@ public class ReportController {
         model.addAttribute("namedQueryList", namedQueryList);
         
         //NamedNative query
-        ViewBook bookReport = bookReportService.findByTitleNative("book2");
-        model.addAttribute("bookView", bookReport);
+        ViewBook viewBook = bookReportService.findByTitleNative("book2");
+        model.addAttribute("viewBook", viewBook);
         
         //TODO: make this work
         //BookReport bookReport = bookReportService.findByTitleNative("book2");
         
-        model.addAttribute("queryLookup", "GET_BOOK_REPORT: " + queryRepo.getQuery("ViewBook.findByTitle"));
+        model.addAttribute("queryLookup", "ViewBook.findByTitle: " + queryRepo.getQuery("ViewBook.findByTitle"));
         
         return "report";
         

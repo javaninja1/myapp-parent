@@ -1,1 +1,1 @@
-insert into book(title) values ('Tale of two Cities');
+insert into book(title) values ('Tale of two Books');
