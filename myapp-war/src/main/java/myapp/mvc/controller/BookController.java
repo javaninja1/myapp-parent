@@ -41,12 +41,13 @@ public class BookController {
     
     @Autowired
     @Resource(name = "colorList")
-    public void setDateFormatList(List<String> list) {
+    public void setColorList(List<String> list) {
         LOG.debug("Setting dateFormatList {}", list);
         this.colorList = list;
     }
+    
     @ModelAttribute("colorList")
-    public List<String> getDateFormatList() {
+    public List<String> getColorList() {
         return colorList;
     }
 
