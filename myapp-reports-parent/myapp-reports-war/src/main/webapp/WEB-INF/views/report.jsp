@@ -73,9 +73,15 @@
     </c:if>
     
     <hr>
-    <b>Named Native Query using sql-mapping:</b> <br>
+    <b>Named Native Query using Annotated POJO:</b> <br>
     <c:if test="${not empty viewBook}">
        ${viewBook.bookId} - ${viewBook.title}
+    </c:if>
+    
+    <hr>
+    <b>Named Native Query using sql-mapping:</b> <br>
+    <c:if test="${not empty bookReportModel}">
+       ${bookReportModel.bookId} - ${bookReportModel.title}
     </c:if>
     
   </div>

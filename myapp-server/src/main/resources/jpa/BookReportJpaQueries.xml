@@ -12,18 +12,29 @@
       </query>
     </named-query>
     
-    <named-native-query name="BookReport.findByTitle" result-set-mapping="book_report_mapping">
+    <named-native-query name="ViewBook.findByTitle">
     <query> select bookId, title from book where title = :title
     </query>
     </named-native-query>
+
+    <named-native-query name="BookReportModel.findByTitle"  result-set-mapping="bookreport_model_mapping">
+    <query> select bookId, title from book where title = :title
+    </query>
+    </named-native-query>
+
     
+    <sql-result-set-mapping name="bookreport_model_entity_result_mapping">
+      <entity-result entity-class="myapp.model.BookReportModel">
+         <field-result name="bookId" column="bookId"/>
+         <field-result name="title" column="title"/>
+     </entity-result>
+    </sql-result-set-mapping>
     
-    <sql-result-set-mapping name="book_report_mapping">
+    <sql-result-set-mapping name="bookreport_model_mapping">
       <constructor-result target-class="myapp.model.BookReportModel">
       <column name="bookId" class="java.lang.Integer"/>
       <column name="title"/>
       </constructor-result>
-    
     </sql-result-set-mapping>
  
  </entity-mappings>

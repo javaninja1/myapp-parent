@@ -6,6 +6,7 @@ import java.util.List;
 import myapp.dao.stub.IQueryRepository;
 import myapp.entity.domain.DOBook;
 import myapp.entity.view.ViewBook;
+import myapp.model.BookReportModel;
 import myapp.mvc.annotation.MyAnno;
 import myapp.service.stub.IBookReportService;
 import myapp.service.stub.IBookService;
@@ -83,8 +84,14 @@ public class ReportController {
         model.addAttribute("namedQueryList", namedQueryList);
         
         //NamedNative query
-        ViewBook viewBook = bookReportService.findByTitleNative("book2");
+        ViewBook viewBook = bookReportService.findByTitleNative("Book 2");
         model.addAttribute("viewBook", viewBook);
+        
+        
+      //NamedNative query
+        BookReportModel bookReportModel = bookReportService.findByTitleNativeWithSqlMapping("Book 2");
+        model.addAttribute("bookReportModel", bookReportModel);
+        
         
         //TODO: make this work
         //BookReport bookReport = bookReportService.findByTitleNative("book2");

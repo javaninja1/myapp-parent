@@ -19,6 +19,18 @@ public class ViewBook implements Serializable{
     @Column(name="title")
     private String title;
 
+    
+    public ViewBook() {
+        super();
+        // TODO Auto-generated constructor stub
+    }
+
+    public ViewBook(int bookId, String title) {
+        super();
+        this.bookId = bookId;
+        this.title = title;
+    }
+
     public int getBookId() {
         return bookId;
     }

@@ -3,8 +3,25 @@
 <beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd"
     >
+    
+    <bean id="pum" class="org.springframework.orm.jpa.persistenceunit.DefaultPersistenceUnitManager">
+      <property name="mappingResources">
+         <list>
+            <value>jpa/BookJpaQueries.xml</value>
+         </list>
+      </property>
+      <property name="packagesToScan" >
+        <list>
+         <value>myapp</value>
+        </list>
+     </property>
+     <property name="sharedCacheMode" value="ENABLE_SELECTIVE" />
+     <property name="validationMode" value="NONE" />
+      <property name="defaultDataSource" ref="dataSource"/>
+ </bean>
+
     <bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
-        <property name="persistenceXmlLocation" value="classpath:META-INF/persistence.xml" />
+     <property name="persistenceUnitManager" ref="pum"/>
         <property name="dataSource" ref="dataSource" />
         <property name="jpaVendorAdapter">
             <bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
@@ -14,10 +31,11 @@
                 <property name="generateDdl" value="false" />
             </bean>
         </property>
+        
         <property name="jpaDialect">
             <bean class="org.springframework.orm.jpa.vendor.HibernateJpaDialect" />
         </property>
-
+ 
         <property name="jpaProperties">
             <props>
                 <prop key="hibernate.current_session_context_class">thread</prop>
@@ -27,41 +45,11 @@
                 <prop key="hibernate.cache.use_second_level_cache">true</prop>
                 <prop key="hibernate.generate_statistics">true</prop>
                 <prop key="hibernate.jdbc.batch_size">20</prop>
-                 <prop key="javax.persistence.sharedCache.mode">ALL</prop>
+                <prop key="javax.persistence.sharedCache.mode">ALL</prop>
                 <prop key="hibernate.temp.use_jdbc_metadata_defaults">false</prop>
             </props>
         </property>
         
     </bean>
-                <!-- <prop key="hibernate.cache.provider_class">net.sf.ehcache.hibernate.SingletonEhCacheProvider</prop> -->
-                <!-- <prop key="hibernate.cache.region.factory_class">org.hibernate.cache.ehcache.EhCacheRegionFactory</prop> -->
-
-
-<!-- <bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
-    <property name="dataSource" ref="dataSource"/>
-    <property name="jpaVendorAdapter">
-        <bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
-            <property name="database" value="HSQL"/>
-            <property name="databasePlatform" value="org.hibernate.dialect.HSQLDialect"/>
-            <property name="showSql" value="true"/>
-            <property name="generateDdl" value="false"/>
-        </bean>
-    </property>
-    <property name="packagesToScan">
-        <list>
-            <value>myapp</value>
-        </list>
-    </property>
-    
-<property name="packagesToScan" value="myapp"/>
-     <property name="jpaPropertyMap">
-        <map>
-            <entry key="hibernate.cache.region.factory_class" value="org.hibernate.cache.ehcache.SingletonEhCacheRegionFactory"/>
-            <entry key="hibernate.cache.use_second_level_cache" value="true"/>
-            <entry key="hibernate.cache.use_query_cache" value="true"/>
-            <entry key="javax.persistence.sharedCache.mode" value="ENABLE_SELECTIVE" />
-        </map>
-    </property>
-</bean> -->
 
 </beans>

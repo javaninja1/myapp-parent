@@ -3,10 +3,29 @@
 <beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd"
     profile="default">
+    
+<!-- transaction-type="JTA" -->
+    <bean id="pum" class="org.springframework.orm.jpa.persistenceunit.DefaultPersistenceUnitManager">
+      <property name="mappingResources">
+       <list>
+          <value>jpa/BookJpaQueries.xml</value>
+          <value>jpa/BookReportJpaQueries.xml</value>
+        </list>
+     </property>
+     <property name="packagesToScan" >
+       <list>
+          <value>myapp</value>
+       </list>
+     </property>
+     <property name="sharedCacheMode" value="ENABLE_SELECTIVE" />
+     <property name="validationMode" value="NONE" />
+      <property name="defaultDataSource" ref="dataSource"/>
+   </bean>
+
 
     <bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
-        <property name="persistenceXmlLocation" value="classpath:META-INF/persistence.xml" />
-        <property name="dataSource" ref="dataSource" />
+      <property name="persistenceUnitManager" ref="pum"/>
+       <property name="dataSource" ref="dataSource" />
         <property name="jpaVendorAdapter">
             <bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
                 <property name="database" value="HSQL" />
@@ -15,11 +34,13 @@
                 <property name="generateDdl" value="false" />
             </bean>
         </property>
-<!--         <property name="packagesToScan">
-        <list>
-            <value>myapp</value>
-        </list>
-    </property> -->
+         <property name="packagesToScan" value="myapp.*" />
+         <property name="mappingResources">
+           <list>
+             <value>META-INF/jpa/BookJpaQueries.xml</value>
+              <value>META-INF/jpa/BookReportJpaQueries.xml</value>
+           </list>
+         </property>
         <property name="jpaDialect">
             <bean class="org.springframework.orm.jpa.vendor.HibernateJpaDialect" />
         </property>
@@ -31,8 +52,8 @@
                 <prop key="hibernate.cache.use_second_level_cache">false</prop>
                 <prop key="hibernate.generate_statistics">true</prop>
                 <prop key="hibernate.jdbc.batch_size">20</prop>
-<!--                 <prop key="hibernate.archive.autodetection">class, hbm</prop>
- -->            
+                <prop key="hibernate.archive.autodetection">class, hbm, xml</prop>
+ 
                 <!-- Speed up startup time -->
                 <prop key="hibernate.temp.use_jdbc_metadata_defaults">false</prop>
             </props>

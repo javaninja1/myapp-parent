@@ -8,6 +8,12 @@
     ]]>      
   </SqlQuery> 
   
+    <SqlQuery name="BookReportModel.findByTitleNative">
+    <![CDATA[
+       SELECT bookId, title FROM book where title = :title 
+    ]]>      
+  </SqlQuery> 
+  
     <SqlQuery name="GET_BOOKS2">
     <![CDATA[
        select * from books2

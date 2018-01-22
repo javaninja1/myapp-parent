@@ -42,19 +42,10 @@ public class JpaBookReportDAO extends BaseJpaDAO<DOBook,Integer> implements IBoo
     }
 
     @Override
-    public BookReportModel findByTitleNativeWithSqlMapping(String title) {
-        TypedQuery<BookReportModel> typedQuery = getEntityManager().createNamedQuery("BookReport.findByTitle", BookReportModel.class);
-        typedQuery.setMaxResults(1);
-        typedQuery.setParameter("title", title);
-        return typedQuery.getResultList()
-                         .stream()
-                         .findFirst()
-                          .orElse(null);
-    }
-    
-    @Override
     public ViewBook findByTitleNative(String title) {        
+        
         TypedQuery<ViewBook> typedQuery = (TypedQuery<ViewBook>) getEntityManager().createNativeQuery(getQuery("ViewBook.findByTitle"), ViewBook.class);
+        
         typedQuery.setMaxResults(1);
         typedQuery.setParameter("title", title);
         return typedQuery.getResultList()
@@ -62,6 +53,21 @@ public class JpaBookReportDAO extends BaseJpaDAO<DOBook,Integer> implements IBoo
                          .findFirst()
                           .orElse(null);
     }
+
+    @Override
+    public BookReportModel findByTitleNativeWithSqlMapping(String title) {
+        TypedQuery<BookReportModel> typedQuery = (TypedQuery<BookReportModel>) getEntityManager()
+                .createNativeQuery(getQuery("BookReportModel.findByTitleNative"),
+                        "bookreport_model_entity_result_mapping");
+                        //"bookreport_model_mapping");
+        
+        typedQuery.setMaxResults(1);
+        typedQuery.setParameter("title", title);
+        return typedQuery.getResultList()
+                         .stream()
+                         .findFirst()
+                          .orElse(null);    
+   }
 
     @Override
     public List<DOBook> findByBookIdGreaterThan(Integer bookId) {

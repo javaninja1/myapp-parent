@@ -5,6 +5,7 @@ import java.util.List;
 import myapp.dao.stub.IBookReportDAO;
 import myapp.entity.domain.DOBook;
 import myapp.entity.view.ViewBook;
+import myapp.model.BookReportModel;
 import myapp.service.stub.IBookReportService;
 
 import org.slf4j.Logger;
@@ -50,6 +51,11 @@ public class BookReportService implements IBookReportService {
     @Override
     public List<DOBook> findByBookIdGreaterThan(Integer bookId) {
         return bookReportDAO.findByBookIdGreaterThan(bookId);
+    }
+
+    @Override
+    public BookReportModel findByTitleNativeWithSqlMapping(String title) {
+        return bookReportDAO.findByTitleNativeWithSqlMapping(title);
     }
     
 
