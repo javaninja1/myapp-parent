@@ -32,6 +32,7 @@ public class BookDAOTest {
     
 
     ////START TESTS
+    //bbbb
     @Test
     public void shouldHaveAnEntityManager() {
         assertNotNull(entityManager);
