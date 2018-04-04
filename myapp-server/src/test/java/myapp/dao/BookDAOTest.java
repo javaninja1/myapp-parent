@@ -30,8 +30,8 @@ public class BookDAOTest {
     @Autowired
     private BookService bookService;
     
-    ////START TESTS
-    
+    ////START TESTS 111222
+    //aabbcc
     @Test
     public void shouldHaveAnEntityManager() {
         assertNotNull(entityManager);
