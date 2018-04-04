@@ -30,7 +30,7 @@ public class BookDAOTest {
     @Autowired
     private BookService bookService;
     
-//nnnn
+//QQQQ
     ////START TESTS
     @Test
     public void shouldHaveAnEntityManager() {
