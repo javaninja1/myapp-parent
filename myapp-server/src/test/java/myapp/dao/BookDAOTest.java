@@ -31,7 +31,7 @@ public class BookDAOTest {
     private BookService bookService;
     
     ////START TESTS
-    
+    //aabbcc
     @Test
     public void shouldHaveAnEntityManager() {
         assertNotNull(entityManager);
