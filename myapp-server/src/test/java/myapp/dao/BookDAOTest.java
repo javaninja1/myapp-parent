@@ -30,11 +30,11 @@ public class BookDAOTest {
     @Autowired
     private BookService bookService;
     
-    //REMOTE 2
+    //REMOTE 3
     
     //XXXXXX
     
-    //LOCAL 5
+    //LOCAL 6
     @Test
     public void shouldHaveAnEntityManager() {
         assertNotNull(entityManager);
