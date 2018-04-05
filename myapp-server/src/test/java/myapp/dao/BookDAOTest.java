@@ -32,14 +32,9 @@ public class BookDAOTest {
     
     //REMOTE 2
     
-    //MMMMM
-//QQQQ
-    ////START TESTS
-    //HHHH
-    
     //XXXXXX
     
-    //LOCAL
+    //LOCAL 5
     @Test
     public void shouldHaveAnEntityManager() {
         assertNotNull(entityManager);
