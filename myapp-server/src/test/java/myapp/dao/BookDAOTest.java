@@ -32,11 +32,6 @@ public class BookDAOTest {
     
     //REMOTE 2
     
-    //MMMMM
-//QQQQ
-    ////START TESTS
-    //HHHH
-    
     //XXXXXX
     
     //LOCAL
