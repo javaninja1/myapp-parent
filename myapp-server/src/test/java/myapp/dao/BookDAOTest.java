@@ -29,6 +29,9 @@ public class BookDAOTest {
     
     @Autowired
     private BookService bookService;
+    
+    //REMOTE
+    
     //MMMMM
 //QQQQ
     ////START TESTS
