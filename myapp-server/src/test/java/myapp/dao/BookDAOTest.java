@@ -39,7 +39,7 @@ public class BookDAOTest {
     
     //XXXXXX
     
-    //LOCAL
+    //LOCAL 2
     @Test
     public void shouldHaveAnEntityManager() {
         assertNotNull(entityManager);
