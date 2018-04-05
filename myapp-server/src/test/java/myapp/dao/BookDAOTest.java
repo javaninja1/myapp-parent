@@ -35,6 +35,7 @@ public class BookDAOTest {
     //XXXXXX
     
     //LOCAL 6
+    //awesome code
     @Test
     public void shouldHaveAnEntityManager() {
         assertNotNull(entityManager);
