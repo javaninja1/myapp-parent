@@ -30,7 +30,7 @@ public class BookDAOTest {
     @Autowired
     private BookService bookService;
     
-    //REMOTE
+    //REMOTE 2
     
     //MMMMM
 //QQQQ
