@@ -29,12 +29,17 @@ public class BookDAOTest {
     
     @Autowired
     private BookService bookService;
+    
+    //REMOTE
+    
     //MMMMM
 //QQQQ
     ////START TESTS
     //HHHH
     
     //XXXXXX
+    
+    //LOCAL
     @Test
     public void shouldHaveAnEntityManager() {
         assertNotNull(entityManager);
