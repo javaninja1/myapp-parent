@@ -34,7 +34,7 @@ public class BookDAOTest {
     
     //XXXXXX
     
-    //LOCAL 2225
+    //LOCAL 22256
     //awesome code
     @Test
     public void shouldHaveAnEntityManager() {
